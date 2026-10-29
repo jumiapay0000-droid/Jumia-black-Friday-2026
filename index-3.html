@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumia Black Friday Mega Deals 2026 | Up to 60% OFF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .jumia-orange { background-color: #f68b1e; }
+        .jumia-orange-text { color: #f68b1e; }
+        .jumia-orange-border { border-color: #f68b1e; }
+        .jumia-dark { background-color: #282828; }
+        .jumia-red { background-color: #e00000; }
+        @keyframes pulse-sale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .sale-badge { animation: pulse-sale 2s infinite; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
+    <div class="jumia-dark text-white text-xs sm:text-sm py-2 px-4 text-center font-medium">
+        🔥 <span class="text-amber-400 font-bold">JUMIA BLACK FRIDAY IS LIVE!</span> Free Delivery on orders over KSh 5,000 | Limited Stock Available!
+    </div>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2 cursor-pointer" onclick="filterCategory('All')">
+                <div class="jumia-orange text-white font-black text-xl sm:text-2xl px-3 py-1 rounded shadow">JUMIA</div>
+                <div class="hidden sm:block">
+                    <span class="text-xs font-bold tracking-widest uppercase block text-gray-500">Black Friday</span>
+                    <span class="text-sm font-extrabold text-black">DEALS 2026</span>
+                </div>
+            </div>
+            <div class="flex-1 max-w-xl relative">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search deals (e.g., TV, Fridge, Cooker)..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-orange-500 text-sm">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="openSettingsModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-gear jumia-orange-text"></i> <span class="hidden md:inline">Settings</span>
+                </button>
+                <a id="headerWhatsApp" href="https://wa.me/254715117399?text=Hello%20I%20want%20to%20inquire%20about%20Jumia%20Black%20Friday%20offers" target="_blank" rel="noopener noreferrer" class="jumia-orange text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-1.5 shadow hover:opacity-95 transition">
+                    <i class="fa-brands fa-whatsapp text-base"></i> <span class="hidden sm:inline">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section class="jumia-orange text-white py-10 px-4 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="bg-black/30 text-amber-300 text-xs sm:text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider">BLACK FRIDAY CATALOG</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold mt-3 mb-2 tracking-tight">Massive Price Slashes & Flash Sales</h1>
+            <p class="text-sm sm:text-lg opacity-95 mb-6">Browse home appliances, TVs, and home essentials at special offer prices.</p>
+            <div class="flex justify-center items-center gap-3 text-black font-mono">
+                <div class="bg-white px-3 py-2 rounded-lg shadow"><span id="days" class="text-xl sm:text-2xl font-black">03</span><span class="block text-[10px] text-gray-500 font-sans uppercase">Days</span></div>
+                <span class="text-white text-xl font-bold">:</span>
+                <div class="bg-white px-3 py-2 rounded-lg shadow"><span id="hours" class="text-xl sm:text-2xl font-black">14</span><span class="block text-[10px] text-gray-500 font-sans uppercase">Hours</span></div>
+                <span class="text-white text-xl font-bold">:</span>
+                <div class="bg-white px-3 py-2 rounded-lg shadow"><span id="minutes" class="text-xl sm:text-2xl font-black">45</span><span class="block text-[10px] text-gray-500 font-sans uppercase">Mins</span></div>
+                <span class="text-white text-xl font-bold">:</span>
+                <div class="bg-white px-3 py-2 rounded-lg shadow"><span id="seconds" class="text-xl sm:text-2xl font-black">22</span><span class="block text-[10px] text-gray-500 font-sans uppercase">Secs</span></div>
+            </div>
+        </div>
+    </section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <div id="categoryFilters" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none"></div>
+    </div>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex justify-between items-center mb-6 gap-3">
+            <h2 id="sectionTitle" class="text-xl sm:text-2xl font-bold text-gray-900">Featured Black Friday Deals (<span id="productCount">0</span>)</h2>
+            <span class="text-xs text-gray-500">Tap to order via WhatsApp</span>
+        </div>
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    </main>
+    <footer class="jumia-dark text-white py-12 mt-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <div class="jumia-orange text-white font-black text-xl px-3 py-1 rounded">JUMIA</div>
+                <span class="font-bold tracking-widest text-lg">BLACK FRIDAY DEALS</span>
+            </div>
+            <p class="text-sm text-gray-400 max-w-md mx-auto mb-6">Browse electronics and home essentials in Kenya.</p>
+            <p class="text-xs text-gray-500">&copy; 2026 Black Friday Deals.</p>
+        </div>
+    </footer>
+    <div id="settingsModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeSettingsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black text-xl font-bold" aria-label="Close">&times;</button>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Configure WhatsApp Contact</h3>
+            <p class="text-xs text-gray-600 mb-4">Update your WhatsApp number for incoming orders.</p>
+            <div class="mb-4">
+                <label for="whatsappNumberInput" class="block text-xs font-bold uppercase text-gray-700 mb-1">WhatsApp Order Phone Number</label>
+                <input type="text" id="whatsappNumberInput" value="+254715117399" class="w-full p-2.5 border rounded-lg text-sm focus:outline-none focus:border-orange-500">
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button onclick="closeSettingsModal()" class="px-4 py-2 border rounded-lg text-sm font-semibold hover:bg-gray-100">Cancel</button>
+                <button onclick="saveSettings()" class="jumia-orange text-white px-5 py-2 rounded-lg text-sm font-bold shadow">Save Settings</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Product image files must be uploaded alongside index.html in the same folder.
+        const products = [
+            { id: 1, title: "Ramtons 4 Gas Burners & 2 Electric Cooker", category: "Cookers & Stoves", price: 19999, originalPrice: 28999, discount: "-31%", savings: "Save KSh 9,000", image: "1000298801.jpg", badge: "Flash Sale" },
+            { id: 2, title: "Modern Glass Top Coffee Table with Stools", category: "Kitchenware & Home", price: 4000, originalPrice: 6500, discount: "-38%", savings: "Save KSh 2,500", image: "1000298800.jpg", badge: "Hot Deal" },
+            { id: 3, title: "Haier 13kg Twin Tub Wash and Dry Machine", category: "Fridges & Freezers", price: 18999, originalPrice: 26999, discount: "-30%", savings: "Save KSh 8,000", image: "1000298799.jpg", badge: "Best Seller" },
+            { id: 4, title: "Bosch Granite Cooking Pots Set (15pcs)", category: "Kitchenware & Home", price: 3500, originalPrice: 6000, discount: "-42%", savings: "Save KSh 2,500", image: "1000298796.jpg", badge: "Mega Sale" },
+            { id: 5, title: "4-Burner Gas Stove with Stand", category: "Cookers & Stoves", price: 5000, originalPrice: 8500, discount: "-41%", savings: "Save KSh 3,500", image: "1000298797.jpg", badge: "Discount" },
+            { id: 6, title: "Hisense 43\" Google Smart TV", category: "Televisions", price: 14000, originalPrice: 21000, discount: "-33%", savings: "Save KSh 7,000", image: "1000298798.jpg", badge: "Top Rated" },
+            { id: 7, title: "Solar Full Kit 300W with Battery & Bulbs", category: "Solar & Energy", price: 9499, originalPrice: 14999, discount: "-37%", savings: "Save KSh 5,500", image: "1000298802.jpg", badge: "Eco Deal" },
+            { id: 8, title: "Nunix 150Ltrs Chest Freezer", category: "Fridges & Freezers", price: 14999, originalPrice: 22000, discount: "-32%", savings: "Save KSh 7,001", image: "1000298803.jpg", badge: "Flash Sale" },
+            { id: 9, title: "Ramtons RF/222 2 Door Fridge - 88L Silver", category: "Fridges & Freezers", price: 6250, originalPrice: 14999, discount: "-58%", savings: "Save KSh 8,749", image: "1000298804.jpg", badge: "Top Deal" },
+            { id: 10, title: "CTC 32\" Smart TV (Panda Screen)", category: "Televisions", price: 7500, originalPrice: 12000, discount: "-38%", savings: "Save KSh 4,500", image: "1000298807.jpg", badge: "Hot Deal" },
+            { id: 11, title: "Nunix K50-Y01 3 Gas + 1 Electric Stovetop", category: "Cookers & Stoves", price: 12999, originalPrice: 18999, discount: "-32%", savings: "Save KSh 6,000", image: "1000298808.jpg", badge: "Best Seller" },
+            { id: 12, title: "Skyworth 43\" Android 4K UHD TV", category: "Televisions", price: 16000, originalPrice: 24000, discount: "-33%", savings: "Save KSh 8,000", image: "1000298809.jpg", badge: "Mega Sale" },
+            { id: 13, title: "Nunix 150Ltrs Eco-Care Deep Freezer", category: "Fridges & Freezers", price: 14999, originalPrice: 21999, discount: "-32%", savings: "Save KSh 7,000", image: "1000298810.jpg", badge: "Flash Sale" },
+            { id: 14, title: "BRÜHM 120L 2 Door Silver Fridge", category: "Fridges & Freezers", price: 17900, originalPrice: 23995, discount: "-25%", savings: "Save KSh 6,095", image: "1000298811.jpg", badge: "Mega Flash" },
+            { id: 15, title: "Vitron 55\" 4K WebOS Frameless Smart TV", category: "Televisions", price: 23999, originalPrice: 35000, discount: "-31%", savings: "Save KSh 11,001", image: "1000298812.jpg", badge: "Top Rated" },
+            { id: 16, title: "Complete K-Gas 13kg Cylinder & 3+1 Cooker", category: "Cookers & Stoves", price: 14995, originalPrice: 24995, discount: "-40%", savings: "Save KSh 10,000", image: "1000298813.jpg", badge: "Combo Deal" },
+            { id: 17, title: "VON Hotpoint 138L Double Door Fridge", category: "Fridges & Freezers", price: 15858, originalPrice: 22000, discount: "-28%", savings: "Save KSh 6,142", image: "1000298814.jpg", badge: "Hot Deal" },
+            { id: 18, title: "Von Hot, Cold & Normal Water Dispenser", category: "Kitchenware & Home", price: 4299, originalPrice: 7000, discount: "-39%", savings: "Save KSh 2,701", image: "1000298816.jpg", badge: "Clearance" },
+            { id: 19, title: "Vitron 24\" Smart TV", category: "Televisions", price: 6500, originalPrice: 11500, discount: "-43%", savings: "Save KSh 5,000", image: "1000298677.jpg", badge: "Flash Sale" }
+        ];
+
+        let currentCategory = "All";
+        let searchQuery = "";
+        const DEFAULT_WHATSAPP = "254715117399";
+        let whatsappNumber = DEFAULT_WHATSAPP;
+
+        try {
+            const savedNumber = localStorage.getItem("jumia_whatsapp");
+            if (savedNumber) whatsappNumber = savedNumber;
+        } catch (e) {}
+
+        const categories = ["All", "Televisions", "Fridges & Freezers", "Cookers & Stoves", "Kitchenware & Home", "Solar & Energy"];
+
+        function cleanPhone(value) {
+            return String(value || "").replace(/\D/g, "");
+        }
+
+        function getWhatsAppUrl(message) {
+            const phone = cleanPhone(whatsappNumber) || DEFAULT_WHATSAPP;
+            return "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+        }
+
+        function initApp() {
+            renderCategories();
+            renderProducts();
+            updateWhatsAppLinks();
+            startCountdown();
+        }
+
+        function renderCategories() {
+            const container = document.getElementById("categoryFilters");
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" class="whitespace-nowrap px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition shadow-sm ${currentCategory === cat ? "jumia-orange text-white shadow" : "bg-white text-gray-700 hover:bg-gray-100 border"}">
+                    ${cat}
+                </button>
+            `).join("");
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            renderCategories();
+            renderProducts();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById("searchInput").value.toLowerCase().trim();
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById("productGrid");
+            const filtered = products.filter(p => {
+                const matchesCat = currentCategory === "All" || p.category === currentCategory;
+                const matchesSearch = p.title.toLowerCase().includes(searchQuery) || p.category.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            document.getElementById("productCount").innerText = filtered.length;
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-12 text-center text-gray-500">No deals found matching your search.</div>';
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <article class="bg-white rounded-xl shadow hover:shadow-lg transition flex flex-col overflow-hidden border border-gray-100 relative group">
+                    <span class="absolute top-2 left-2 jumia-red text-white text-[10px] font-extrabold px-2 py-0.5 rounded uppercase tracking-wider sale-badge z-10">${p.badge}</span>
+                    <span class="absolute top-2 right-2 bg-amber-400 text-black text-[10px] font-black px-2 py-0.5 rounded shadow z-10">${p.discount}</span>
+                    <div class="h-48 bg-gray-50 flex items-center justify-center overflow-hidden">
+                        <img src="${p.image}" alt="${p.title}" loading="lazy" class="w-full h-full object-contain p-3" onerror="this.onerror=null;this.style.display='none';this.parentElement.innerHTML='<div class=&quot;text-center text-gray-500 text-sm p-4&quot;><i class=&quot;fa-regular fa-image text-3xl mb-2&quot;></i><p>Photo missing</p><p class=&quot;text-xs mt-1&quot;>${p.image}</p></div>';">
+                    </div>
+                    <div class="p-4 flex flex-col flex-1">
+                        <p class="text-xs text-gray-500 mb-1">${p.category}</p>
+                        <h3 class="font-semibold text-sm leading-snug min-h-[2.5rem]">${p.title}</h3>
+                        <div class="mt-3 flex items-baseline gap-2 flex-wrap">
+                            <span class="text-xl font-extrabold text-gray-900">KSh ${p.price.toLocaleString("en-KE")}</span>
+                            <span class="text-xs text-gray-400 line-through">KSh ${p.originalPrice.toLocaleString("en-KE")}</span>
+                        </div>
+                        <p class="text-xs text-green-700 font-semibold mt-1">${p.savings}</p>
+                        <a href="${getWhatsAppUrl("Hello, I want to order: " + p.title + ". Price: KSh " + p.price.toLocaleString("en-KE"))}" target="_blank" rel="noopener noreferrer" class="mt-4 w-full jumia-orange text-white text-center py-2.5 rounded-lg font-bold text-sm hover:opacity-95 transition">
+                            <i class="fa-brands fa-whatsapp mr-1"></i> Order on WhatsApp
+                        </a>
+                    </div>
+                </article>
+            `).join("");
+        }
+
+        function updateWhatsAppLinks() {
+            const headerLink = document.getElementById("headerWhatsApp");
+            headerLink.href = getWhatsAppUrl("Hello, I want to inquire about Jumia Black Friday offers.");
+        }
+
+        function openSettingsModal() {
+            document.getElementById("whatsappNumberInput").value = "+" + cleanPhone(whatsappNumber);
+            const modal = document.getElementById("settingsModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeSettingsModal() {
+            const modal = document.getElementById("settingsModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+
+        function saveSettings() {
+            const entered = cleanPhone(document.getElementById("whatsappNumberInput").value);
+            if (entered.length < 10) {
+                alert("Please enter a valid WhatsApp number including the country code, for example +254715117399.");
+                return;
+            }
+            whatsappNumber = entered;
+            try { localStorage.setItem("jumia_whatsapp", whatsappNumber); } catch (e) {}
+            updateWhatsAppLinks();
+            renderProducts();
+            closeSettingsModal();
+            alert("WhatsApp number updated.");
+        }
+
+        function startCountdown() {
+            // Countdown is set to 3 days from the first page load on this device.
+            const key = "jumia_black_friday_end";
+            let end;
+            try {
+                const stored = localStorage.getItem(key);
+                if (stored && Number(stored) > Date.now()) end = Number(stored);
+                else {
+                    end = Date.now() + 3 * 24 * 60 * 60 * 1000;
+                    localStorage.setItem(key, String(end));
+                }
+            } catch (e) {
+                end = Date.now() + 3 * 24 * 60 * 60 * 1000;
+            }
+
+            function tick() {
+                let remaining = Math.max(0, end - Date.now());
+                const days = Math.floor(remaining / 86400000);
+                remaining %= 86400000;
+                const hours = Math.floor(remaining / 3600000);
+                remaining %= 3600000;
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+                document.getElementById("days").textContent = String(days).padStart(2, "0");
+                document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+                document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+                document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+            }
+            tick();
+            setInterval(tick, 1000);
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") closeSettingsModal();
+        });
+
+        initApp();
+    </script>
+</body>
+</html>
